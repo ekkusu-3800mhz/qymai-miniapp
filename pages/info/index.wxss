@@ -1,0 +1,12 @@
+page {
+    background-color: #f7f8fa;
+}
+
+#info-map {
+    width: 100vw;
+    height: 30vh;
+}
+
+.shop-info-container {
+    margin-top: -50rpx;
+}

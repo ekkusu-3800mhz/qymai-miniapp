@@ -1,0 +1,48 @@
+<map id="info-map" markers="{{markers}}" longitude="{{shopLongitude}}" latitude="{{shopLatitude}}" scale="15" show-location="{{false}}"></map>
+<view class="container shop-info-container">
+    <block wx:if="{{shopInfo}}">
+        <van-cell-group>
+            <van-cell title="{{shopInfo.name}}" label="{{shopInfo.address}}" size="large" border="{{false}}" bind:click="setNavi" clickable="{{true}}">
+                <van-icon slot="right-icon" name="location-o" class="custom-icon" />
+            </van-cell>
+            <block wx:if="{{shopInfo.businessTime}}">
+                <van-cell title="营业时间" label="{{shopInfo.businessTime}}" border="{{false}}" />
+            </block>
+            <block wx:if="{{shopInfo.description}}">
+                <van-cell title="店铺描述" label="{{shopInfo.description}}" border="{{false}}" />
+            </block>
+            <block wx:if="{{shopInfo.creditPrice}}">
+                <van-cell title="游戏币价格" label="单币 {{shopInfo.creditPrice}}元/枚" border="{{false}}" />
+            </block>
+        </van-cell-group>
+    </block>
+    <block wx:if="{{cabinetList}}">
+        <van-cell-group title="共有 {{cabinetList.length}} 个版本的机台" border="{{false}}" />
+        <block wx:for="{{cabinetList}}">
+            <van-cell-group inset>
+                <van-cell title="舞萌DX 2022" icon="play-circle-o" size="large" border="{{false}}" />
+                <van-cell title="版本" value="Ver.{{item.version}}" border="{{false}}" />
+                <van-cell title="数量" value="{{item.number}}组" border="{{false}}" />
+                <van-cell title="单局投币" value="{{item.credit}}枚" border="{{false}}" />
+                <van-cell wx:if="{{item.enablePlayerCount}}" value="{{item.playerCount}}人" border="{{false}}">
+                    <view slot="title">
+                        <view class="van-cell-text">当前排队人数</view>
+                        <block wx:if="{{0 < (item.playerCount / item.maxCapacity) < 0.3}}">
+                            <van-tag type="success">舒适</van-tag>
+                        </block>
+                        <block wx:elif="{{0.3 < (item.playerCount / item.maxCapacity) < 0.5}}">
+                            <van-tag type="primary">一般</van-tag>
+                        </block>
+                        <block wx:elif="{{0.5 < (item.playerCount / item.maxCapacity) < 0.8}}">
+                            <van-tag type="warning">较为拥挤</van-tag>
+                        </block>
+                        <block wx:elif="{{0.8 < (item.playerCount / item.maxCapacity)}}">
+                            <van-tag type="danger">十分拥挤</van-tag>
+                        </block>
+                    </view>
+                </van-cell>
+                <van-cell wx:if="{{item.remark}}" title="备注" label="{{item.remark}}" border="{{false}}" />
+            </van-cell-group>
+        </block>
+    </block>
+</view>
