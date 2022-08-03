@@ -1,0 +1,35 @@
+{
+    "pages": [
+        "pages/map/index",
+        "pages/queue/index",
+        "pages/info/index"
+    ],
+    "tabBar": {
+        "color": "#888",
+        "selectedColor": "#42bbcc",
+        "list": [{
+            "pagePath": "pages/map/index",
+            "iconPath": "./static/tab_map.png",
+            "selectedIconPath": "./static/tab_active_map.png",
+            "text": "地图"
+        },{
+            "pagePath": "pages/queue/index",
+            "iconPath": "./static/tab_queue.png",
+            "selectedIconPath": "./static/tab_active_queue.png",
+            "text": "排队"
+        }]
+    },
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "QYmaiHelper",
+        "navigationBarTextStyle": "black"
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "您的位置将用于计算您与附近店铺的距离"
+        }
+    },
+    "sitemapLocation": "sitemap.json",
+    "lazyCodeLoading": "requiredComponents"
+}
