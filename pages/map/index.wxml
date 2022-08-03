@@ -1,0 +1,29 @@
+<view>
+    <map id="map" markers="{{markers}}" longitude="{{centerLongitude}}" latitude="{{centerLatitude}}" bindcallouttap="calloutTap" scale="13" show-scale="true" show-location="{{true}}">
+        <view class="to-location">
+            <van-button bind:click="toLocation" round><van-icon name="aim" /></van-button>
+        </view>
+        <van-notice-bar left-icon="info-o" text="当前共有 {{markers.length}} 间店铺" backgroundColor="#ecf9ff" color="#1989fa" />
+        <van-action-sheet show="{{actionSheetShow}}" title="{{shopInfo.name}}" bind:close="actionSheetClose">
+            <view class="shop-info-content">
+                <view class="shop-info-item">
+                    <view class="item-title">地址</view>
+                    <view class="item-content">{{shopInfo.address}}</view>
+                </view>
+                <view class="shop-info-item" wx:if="{{shopInfo.businessTime}}">
+                    <view class="item-title">营业时间</view>
+                    <view class="item-content">
+                        <block wx:if="{{shopInfo.businessTime}}">{{shopInfo.businessTime}}</block>
+                        <block wx:else>未知</block>
+                    </view>
+                </view>
+                <view class="shop-info-item">
+                    <view class="navi-btn-group">
+                        <van-button custom-class="navi-btn-left" color="#42bbcc" bind:click="toShopInfo" plain round><van-icon name="search" /> 查看店铺信息</van-button>
+                        <van-button custom-class="navi-btn-right" color="#42bbcc" bind:click="setNavi" round><van-icon name="location-o" /> 导航至此店</van-button>
+                    </view>
+                </view>
+            </view>
+        </van-action-sheet>
+    </map>
+</view>

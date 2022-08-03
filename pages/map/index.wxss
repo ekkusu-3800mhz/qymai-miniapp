@@ -1,0 +1,45 @@
+#map {
+    width: 100vw;
+    height: 100vh;
+}
+
+.to-location {
+    position: fixed;
+    bottom: 120rpx;
+    right: 30rpx;
+}
+
+.shop-info-content {
+    margin-left: 30rpx;
+    margin-right: 30rpx;
+    margin-top: 20rpx;
+    margin-bottom: 50rpx;
+}
+
+.shop-info-item {
+    margin-top: 50rpx;
+    margin-bottom: 50rpx;
+}
+
+.shop-info-item > .item-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shop-info-item > .item-content {
+    margin-top: 20rpx;
+}
+
+.shop-info-item > .navi-btn-group {
+    text-align: center;
+}
+
+.navi-btn-left {
+    margin-right: 10rpx;
+    width: 35vw;
+}
+
+.navi-btn-right {
+    margin-left: 10rpx;
+    width: 35vw;
+}
