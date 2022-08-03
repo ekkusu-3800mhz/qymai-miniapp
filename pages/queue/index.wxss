@@ -1,0 +1,19 @@
+.icon-box {
+    text-align: center;
+}
+
+.icon-box-content {
+    margin-top: 80rpx;
+}
+
+.icon-box-title {
+    color: #c9c9c9;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.icon-box-desc {
+    color: #c9c9c9;
+    font-size: 14px;
+    margin-top: 20rpx;
+}

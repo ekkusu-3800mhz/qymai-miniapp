@@ -1,0 +1,9 @@
+<view class="notice-container">
+    <view class="icon-box">
+        <icon class="icon-box-img" type="warn" color="#c9c9c9" size="120"></icon>
+        <view class="icon-box-content">
+            <view class="icon-box-title">排队功能即将推出</view>
+            <view class="icon-box-desc">敬请期待</view>
+        </view>
+    </view>
+</view>
