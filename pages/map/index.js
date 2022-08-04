@@ -1,3 +1,4 @@
+const { callContainer } = require("../../utils/functions.js");
 
 const app = getApp();
 
@@ -19,16 +20,7 @@ Page({
             mask: true,
         });
         this.setData({markers: []});
-        let request = wx.cloud.callContainer({
-            config: {
-                "env": "prod-0gmvmgprbb4448fb"
-            },
-            path: "/shop/list",
-            header: {
-              "X-WX-SERVICE": "miniapp-django"
-            },
-            method: "GET",
-        });
+        let request = callContainer("/shop/list", "GET");
         let map = wx.createMapContext('map', this);
         request.then((res) => {
             if (res.data.status === 200) {
@@ -85,19 +77,7 @@ Page({
             actionSheetShow: false,
             shopInfo: {},
         });
-        let request = wx.cloud.callContainer({
-            config: {
-                "env": "prod-0gmvmgprbb4448fb"
-            },
-            path: "/shop/info",
-            header: {
-              "X-WX-SERVICE": "miniapp-django"
-            },
-            method: "GET",
-            data: {
-                shop_id: shopId,
-            },
-        });
+        let request = callContainer("/shop/info", "GET", {shop_id: shopId});
         request.then((res) => {
             if (res.data.status === 200) {
                 wx.hideLoading();

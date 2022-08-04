@@ -1,3 +1,4 @@
+const { callContainer } = require("../../utils/functions.js");
 
 const app = getApp();
 
@@ -23,19 +24,7 @@ Page({
             shopLongitude: 0,
             shopLatitude: 0,
         });
-        let request = wx.cloud.callContainer({
-            config: {
-                "env": "prod-0gmvmgprbb4448fb"
-            },
-            path: "/shop/info",
-            header: {
-              "X-WX-SERVICE": "miniapp-django"
-            },
-            method: "GET",
-            data: {
-                shop_id: query.id,
-            },
-        });
+        let request = callContainer("/shop/info", "GET", {shop_id: query.id});
         let map = wx.createMapContext('info-map', this);
         request.then((res) => {
             if (res.data.status === 200) {
