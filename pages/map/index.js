@@ -65,6 +65,13 @@ Page({
                     showCancel: false,
                 });
             }
+        }).catch((err) => {
+            wx.hideLoading();
+            wx.showModal({
+                title: '加载失败',
+                content: `云服务启动中，请稍后再进入小程序`,
+                showCancel: false,
+            });
         });
     },
 
@@ -111,6 +118,13 @@ Page({
                     showCancel: false,
                 });
             }
+        }).catch((err) => {
+            wx.hideLoading();
+            wx.showModal({
+                title: '加载失败',
+                content: `云服务启动中，请稍后再进入小程序`,
+                showCancel: false,
+            });
         });
     },
 
