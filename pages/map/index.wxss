@@ -43,3 +43,8 @@
     margin-left: 10rpx;
     width: 35vw;
 }
+
+.business-time-tips {
+    margin-top: 20rpx;
+    font-size: 14px;
+}

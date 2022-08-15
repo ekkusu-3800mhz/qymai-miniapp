@@ -13,8 +13,8 @@
                 <view class="shop-info-item" wx:if="{{shopInfo.businessTime}}">
                     <view class="item-title">营业时间</view>
                     <view class="item-content">
-                        <block wx:if="{{shopInfo.businessTime}}">{{shopInfo.businessTime}}</block>
-                        <block wx:else>未知</block>
+                        <block>{{shopInfo.businessTime}}</block>
+                        <view class="business-time-tips">（营业时间仅供参考，实际以店铺当日营业计划为准）</view>
                     </view>
                 </view>
                 <view class="shop-info-item">
