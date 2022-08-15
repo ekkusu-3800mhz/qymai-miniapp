@@ -20,23 +20,23 @@
         <van-cell-group title="共有 {{cabinetList.length}} 个版本的机台" border="{{false}}" />
         <block wx:for="{{cabinetList}}">
             <van-cell-group inset>
-                <van-cell title="舞萌DX 2022" icon="play-circle-o" size="large" border="{{false}}" />
+                <van-cell title="{{item.game}}" icon="play-circle-o" size="large" border="{{false}}" />
                 <van-cell title="版本" value="Ver.{{item.version}}" border="{{false}}" />
                 <van-cell title="数量" value="{{item.number}}组" border="{{false}}" />
                 <van-cell title="单局投币" value="{{item.credit}}枚" border="{{false}}" />
                 <van-cell wx:if="{{item.enablePlayerCount}}" value="{{item.playerCount}}人" border="{{false}}">
                     <view slot="title">
                         <view class="van-cell-text">当前排队人数</view>
-                        <block wx:if="{{0 < (item.playerCount / item.maxCapacity) < 0.3}}">
+                        <block wx:if="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.3}}">
                             <van-tag type="success">舒适</van-tag>
                         </block>
-                        <block wx:elif="{{0.3 < (item.playerCount / item.maxCapacity) < 0.5}}">
+                        <block wx:elif="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.5}}">
                             <van-tag type="primary">一般</van-tag>
                         </block>
-                        <block wx:elif="{{0.5 < (item.playerCount / item.maxCapacity) < 0.8}}">
+                        <block wx:elif="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.8}}">
                             <van-tag type="warning">较为拥挤</van-tag>
                         </block>
-                        <block wx:elif="{{0.8 < (item.playerCount / item.maxCapacity)}}">
+                        <block wx:else>
                             <van-tag type="danger">十分拥挤</van-tag>
                         </block>
                     </view>

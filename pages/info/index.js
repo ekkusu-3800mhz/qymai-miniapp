@@ -24,7 +24,7 @@ Page({
             shopLongitude: 0,
             shopLatitude: 0,
         });
-        let request = callContainer("/shop/info", "GET", {shop_id: query.id});
+        let request = callContainer("/shop/cabinet", "GET", {shop_id: query.id});
         let map = wx.createMapContext('info-map', this);
         request.then((res) => {
             if (res.data.status === 200) {
