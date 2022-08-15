@@ -14,15 +14,15 @@ Page({
         centerLatitude: 23.70992,
     },
 
-    onLoad() {
+    async onLoad() {
         wx.showLoading({
             title: '加载店铺中',
             mask: true,
         });
         this.setData({markers: []});
-        let request = callContainer("/shop/list", "GET");
         let map = wx.createMapContext('map', this);
-        request.then((res) => {
+        try {
+            let res = await callContainer("/shop/list", "GET");
             if (res.data.status === 200) {
                 let shopList = res.data.data.shopList;
                 let markers = [];
@@ -56,18 +56,18 @@ Page({
                     content: `HTTP ${res.data.status}`,
                     showCancel: false,
                 });
-            }
-        }).catch((err) => {
+            } 
+        } catch (err) {
             wx.hideLoading();
             wx.showModal({
                 title: '加载失败',
                 content: `云服务启动中，请稍后再进入小程序`,
                 showCancel: false,
             });
-        });
+        };
     },
 
-    calloutTap(e) {
+    async calloutTap(e) {
         wx.showLoading({
             title: '加载店铺中',
             mask: true,
@@ -77,8 +77,8 @@ Page({
             actionSheetShow: false,
             shopInfo: {},
         });
-        let request = callContainer("/shop/info", "GET", {shop_id: shopId});
-        request.then((res) => {
+        try {
+            let res = await callContainer("/shop/info", "GET", {shop_id: shopId});
             if (res.data.status === 200) {
                 wx.hideLoading();
                 let loc = res.data.data.shopInfo.location.split(',');
@@ -98,14 +98,14 @@ Page({
                     showCancel: false,
                 });
             }
-        }).catch((err) => {
+        } catch (err) {
             wx.hideLoading();
             wx.showModal({
                 title: '加载失败',
                 content: `云服务启动中，请稍后再进入小程序`,
                 showCancel: false,
             });
-        });
+        };
     },
 
     actionSheetClose() {
@@ -115,12 +115,9 @@ Page({
     },
 
     toLocation() {
-        let location = wx.getLocation({type: 'gcj02'});
-        location.then((res) => {
-            this.setData({
-                centerLongitude: res.longitude,
-                centerLatitude: res.latitude,
-            });
+        this.setData({
+            centerLongitude: app.globalData.userLocation.longitude,
+            centerLatitude: app.globalData.userLocation.latitude,
         });
     },
 

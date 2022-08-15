@@ -12,7 +12,7 @@ Page({
         markers: [],
     },
 
-    onLoad(query) {
+    async onLoad(query) {
         wx.showLoading({
             title: '加载中',
             mask: true,
@@ -24,9 +24,9 @@ Page({
             shopLongitude: 0,
             shopLatitude: 0,
         });
-        let request = callContainer("/shop/cabinet", "GET", {shop_id: query.id});
         let map = wx.createMapContext('info-map', this);
-        request.then((res) => {
+        try {
+            let res = await callContainer("/shop/cabinet", "GET", {shop_id: query.id});
             if (res.data.status === 200) {
                 wx.hideLoading();
                 let loc = res.data.data.shopInfo.location.split(',');
@@ -63,14 +63,14 @@ Page({
                     showCancel: false,
                 });
             }
-        }).catch((err) => {
+        } catch (err) {
             wx.hideLoading();
             wx.showModal({
                 title: '加载失败',
                 content: `云服务启动中，请稍后再进入小程序`,
                 showCancel: false,
             });
-        });
+        };
     },
 
     setNavi() {
