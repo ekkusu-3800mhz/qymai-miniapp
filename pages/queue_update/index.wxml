@@ -1,0 +1,39 @@
+<van-notify id="van-notify" />
+<view>
+    <view class="cabinet-item">
+        <van-cell-group inset>
+            <van-cell title="{{cabinetInfo.game}}" icon="play-circle-o" size="large" border="{{false}}" />
+            <van-cell title="店铺" value="{{cabinetInfo.shop}}" border="{{false}}" />
+            <van-cell title="排队更新时间" value="{{cabinetInfo.updateTime}}" border="{{false}}" />
+            <van-cell wx:if="{{cabinetInfo.enablePlayerCount}}" value="{{cabinetInfo.playerCount}}人" border="{{false}}">
+                <view slot="title">
+                    <view class="van-cell-text">当前排队人数</view>
+                    <block wx:if="{{(cabinetInfo.playerCount / (cabinetInfo.number * cabinetInfo.maxCapacity)) < 0.3}}">
+                        <van-tag type="success">舒适</van-tag>
+                    </block>
+                    <block wx:elif="{{(cabinetInfo.playerCount / (cabinetInfo.number * cabinetInfo.maxCapacity)) < 0.5}}">
+                        <van-tag type="primary">一般</van-tag>
+                    </block>
+                    <block wx:elif="{{(cabinetInfo.playerCount / (cabinetInfo.number * cabinetInfo.maxCapacity)) < 0.8}}">
+                        <van-tag type="warning">较为拥挤</van-tag>
+                    </block>
+                    <block wx:else>
+                        <van-tag type="danger">十分拥挤</van-tag>
+                    </block>
+                </view>
+            </van-cell>
+        </van-cell-group>
+    </view>
+    <view class="cabinet-item">
+        <van-cell-group title="更新人数" border="{{false}}" />
+    </view>
+    <view class="cabinet-item">
+        <van-cell-group inset>
+            <van-field label="当前排队人数" size="large" input-align="right" value="{{playerCount}}" type="number" placeholder="请输入当前排队人数" border="{{ false }}" bind:change="playerCountChange" error-message="{{errorMessage}}" />
+        </van-cell-group>
+    </view>
+    <view class="cabinet-item button-area">
+        <van-button custom-class="update-button" type="primary" color="#42bbcc" bind:click="playerCountUpdate" round>更新人数</van-button>
+    </view>
+    <view class="wrap"></view>
+</view>

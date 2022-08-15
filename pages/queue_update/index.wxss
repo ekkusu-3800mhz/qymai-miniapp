@@ -1,0 +1,41 @@
+page {
+    background-color: #f7f8fa;
+}
+
+.cabinet-item {
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.wrap {
+    padding-bottom: 50rpx;
+}
+
+.icon-box {
+    text-align: center;
+}
+
+.icon-box-content {
+    margin-top: 80rpx;
+}
+
+.icon-box-title {
+    color: #c9c9c9;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.icon-box-desc {
+    color: #c9c9c9;
+    font-size: 14px;
+    margin-top: 20rpx;
+}
+
+.button-area {
+    text-align: center;
+    margin-top: 150rpx;
+}
+
+.update-button {
+    width: 300rpx;
+}
