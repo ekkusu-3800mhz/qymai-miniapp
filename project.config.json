@@ -1,7 +1,8 @@
 {
     "description": "项目配置文件",
     "packOptions": {
-        "ignore": []
+        "ignore": [],
+        "include": []
     },
     "setting": {
         "urlCheck": false,
@@ -37,43 +38,18 @@
                 "packageJsonPath": "./package.json",
                 "miniprogramNpmDistDir": "./"
             }
-        ]
+        ],
+        "ignoreUploadUnusedFiles": false
     },
     "compileType": "miniprogram",
     "libVersion": "2.25.2",
     "appid": "wx9022a2d31f1b6037",
     "projectname": "%E6%B8%85mai%E5%87%BA%E5%8B%A4%E5%8A%A9%E6%89%8B",
-    "debugOptions": {
-        "hidedInDevtools": []
-    },
-    "scripts": {},
-    "isGameTourist": false,
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
-    "condition": {
-        "search": {
-            "current": -1,
-            "list": []
-        },
-        "conversation": {
-            "current": -1,
-            "list": []
-        },
-        "game": {
-            "current": -1,
-            "list": []
-        },
-        "plugin": {
-            "current": -1,
-            "list": []
-        },
-        "gamePlugin": {
-            "current": -1,
-            "list": []
-        },
-        "miniprogram": {
-            "current": -1,
-            "list": []
-        }
+    "condition": {},
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
     }
 }
