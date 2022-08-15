@@ -1,0 +1,12 @@
+{
+    "usingComponents": {
+        "van-icon": "@vant/weapp/icon/index",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index",
+        "van-tag": "@vant/weapp/tag/index"
+    },
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 30,
+    "backgroundTextStyle": "dark",
+    "navigationBarTitleText": "全部机台信息"
+}

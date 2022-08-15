@@ -1,0 +1,33 @@
+<view>
+    <view class="cabinet-item">
+        <van-cell-group title="查询到 {{cabinetList.length}} 个条目" border="{{false}}" />
+    </view>
+    <view wx:for="{{cabinetList}}" class="cabinet-item">
+        <van-cell-group inset>
+            <van-cell title="{{item.game}}" icon="play-circle-o" size="large" border="{{false}}" />
+            <van-cell title="店铺" value="{{item.shop.name}}" border="{{false}}" />
+            <van-cell title="版本" value="Ver.{{item.version}}" border="{{false}}" />
+            <van-cell title="数量" value="{{item.number}}组" border="{{false}}" />
+            <van-cell title="排队更新时间" value="{{item.updateTime}}" border="{{false}}" />
+            <van-cell wx:if="{{item.enablePlayerCount}}" value="{{item.playerCount}}人" border="{{false}}">
+                <view slot="title">
+                    <view class="van-cell-text">当前排队人数</view>
+                    <block wx:if="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.3}}">
+                        <van-tag type="success">舒适</van-tag>
+                    </block>
+                    <block wx:elif="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.5}}">
+                        <van-tag type="primary">一般</van-tag>
+                    </block>
+                    <block wx:elif="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.8}}">
+                        <van-tag type="warning">较为拥挤</van-tag>
+                    </block>
+                    <block wx:else>
+                        <van-tag type="danger">十分拥挤</van-tag>
+                    </block>
+                </view>
+            </van-cell>
+            <van-cell is-link title="查看详情" link-type="navigateTo" url="/pages/info/index?id={{item.shop.id}}" />
+        </van-cell-group>
+    </view>
+    <view class="wrap"></view>
+</view>

@@ -1,0 +1,12 @@
+page {
+    background-color: #f7f8fa;
+}
+
+.cabinet-item {
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+}
+
+.wrap {
+    padding-bottom: 50rpx;
+}
