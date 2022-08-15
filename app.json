@@ -1,22 +1,29 @@
 {
     "pages": [
         "pages/map/index",
+        "pages/info/index",
         "pages/queue/index",
-        "pages/info/index"
+        "pages/cabinet/index",
+        "pages/queue_update/index"
     ],
     "tabBar": {
         "color": "#888",
         "selectedColor": "#42bbcc",
         "list": [{
             "pagePath": "pages/map/index",
-            "iconPath": "./static/tab_map.png",
-            "selectedIconPath": "./static/tab_active_map.png",
+            "iconPath": "./static/tab/tab_map.png",
+            "selectedIconPath": "./static/tab/tab_active_map.png",
             "text": "地图"
         },{
             "pagePath": "pages/queue/index",
-            "iconPath": "./static/tab_queue.png",
-            "selectedIconPath": "./static/tab_active_queue.png",
+            "iconPath": "./static/tab/tab_queue.png",
+            "selectedIconPath": "./static/tab/tab_active_queue.png",
             "text": "排队"
+        },{
+            "pagePath": "pages/cabinet/index",
+            "iconPath": "./static/tab/tab_cabinet.png",
+            "selectedIconPath": "./static/tab/tab_active_cabinet.png",
+            "text": "机台信息"
         }]
     },
     "window": {
@@ -30,6 +37,9 @@
             "desc": "您的位置将用于计算您与附近店铺的距离"
         }
     },
+    "requiredPrivateInfos": [
+        "getLocation"
+    ],
     "sitemapLocation": "sitemap.json",
     "lazyCodeLoading": "requiredComponents"
 }
