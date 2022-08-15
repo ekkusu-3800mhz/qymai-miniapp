@@ -1,9 +1,44 @@
-<view class="notice-container">
-    <view class="icon-box">
-        <icon class="icon-box-img" type="warn" color="#c9c9c9" size="120"></icon>
-        <view class="icon-box-content">
-            <view class="icon-box-title">排队功能即将推出</view>
-            <view class="icon-box-desc">敬请期待</view>
+<block wx:if="{{cabinetList.length > 0}}">
+    <view>
+        <view class="cabinet-item">
+            <van-cell-group title="200米范围内共有 {{cabinetList.length}} 个条目" border="{{false}}" />
+        </view>
+        <view wx:for="{{cabinetList}}" class="cabinet-item">
+            <van-cell-group inset>
+                <van-cell title="{{item.game}}" icon="play-circle-o" size="large" border="{{false}}" />
+                <van-cell title="店铺" value="{{item.shop.name}}" border="{{false}}" />
+                <van-cell title="排队更新时间" value="{{item.updateTime}}" border="{{false}}" />
+                <van-cell wx:if="{{item.enablePlayerCount}}" value="{{item.playerCount}}人" border="{{false}}">
+                    <view slot="title">
+                        <view class="van-cell-text">当前排队人数</view>
+                        <block wx:if="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.3}}">
+                            <van-tag type="success">舒适</van-tag>
+                        </block>
+                        <block wx:elif="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.5}}">
+                            <van-tag type="primary">一般</van-tag>
+                        </block>
+                        <block wx:elif="{{(item.playerCount / (item.number * item.maxCapacity)) < 0.8}}">
+                            <van-tag type="warning">较为拥挤</van-tag>
+                        </block>
+                        <block wx:else>
+                            <van-tag type="danger">十分拥挤</van-tag>
+                        </block>
+                    </view>
+                </van-cell>
+                <van-cell is-link title="更新人数" link-type="navigateTo" url="/pages/queue_update/index?id={{item.id}}" />
+            </van-cell-group>
+        </view>
+        <view class="wrap"></view>
+    </view>
+</block>
+<block wx:else>
+    <view class="notice-container">
+        <view class="icon-box">
+            <icon class="icon-box-img" type="warn" color="#c9c9c9" size="120"></icon>
+            <view class="icon-box-content">
+                <view class="icon-box-title">当前位置并无可用店铺</view>
+                <view class="icon-box-desc">当您进入可用店铺200米范围内时，即可参与排队</view>
+            </view>
         </view>
     </view>
-</view>
+</block>

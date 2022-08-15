@@ -1,66 +1,72 @@
-// pages/queue/index.js
+const { callContainer, calculateDistance } = require("../../utils/functions.js");
+
+const app = getApp();
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
     data: {
-
+        cabinetList: [],
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
+    async onShow() {
+        wx.startPullDownRefresh();
+        try {
+            let locationStr = `${app.globalData.userLocation.latitude},${app.globalData.userLocation.longitude}`;
+            let res = await callContainer("/queue/list", "GET");
+            if (res.data.status === 200) {
+                let cabinetList = res.data.data.cabinetList;
+                let filtered = [];
+                for (let i = 0; i < cabinetList.length; i++) {
+                    let distance = await calculateDistance(locationStr, cabinetList[i].shop.location);
+                    if (distance < 200) {
+                        filtered.push(cabinetList[i]);
+                    }
+                }
+                this.setData({
+                    cabinetList: filtered,
+                });
+            } else {
+                wx.showModal({
+                    title: '加载失败',
+                    content: `HTTP ${res.data.status}`,
+                    showCancel: false,
+                });
+            }
+            wx.stopPullDownRefresh();
+        } catch (e) {
+            wx.stopPullDownRefresh();
+            console.error(e);
+        }
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
+    async onPullDownRefresh() {
+        try {
+            let locationStr = `${app.globalData.userLocation.latitude},${app.globalData.userLocation.longitude}`;
+            let res = await callContainer("/queue/list", "GET");
+            if (res.data.status === 200) {
+                let cabinetList = res.data.data.cabinetList;
+                let filtered = [];
+                for (let i = 0; i < cabinetList.length; i++) {
+                    let distance = await calculateDistance(locationStr, cabinetList[i].shop.location);
+                    if (distance < 200) {
+                        filtered.push(cabinetList[i]);
+                    }
+                }
+                this.setData({
+                    cabinetList: filtered,
+                });
+            } else {
+                wx.showModal({
+                    title: '加载失败',
+                    content: `HTTP ${res.data.status}`,
+                    showCancel: false,
+                });
+            }
+            wx.stopPullDownRefresh();
+        } catch (e) {
+            wx.stopPullDownRefresh();
+            console.error(e);
+        }
     },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
-})
+    
+});
