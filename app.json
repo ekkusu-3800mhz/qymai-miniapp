@@ -2,9 +2,7 @@
     "pages": [
         "pages/map/index",
         "pages/info/index",
-        "pages/queue/index",
-        "pages/cabinet/index",
-        "pages/queue_update/index"
+        "pages/cabinet/index"
     ],
     "tabBar": {
         "color": "#888",
@@ -14,11 +12,6 @@
             "iconPath": "./static/tab/tab_map.png",
             "selectedIconPath": "./static/tab/tab_active_map.png",
             "text": "地图"
-        },{
-            "pagePath": "pages/queue/index",
-            "iconPath": "./static/tab/tab_queue.png",
-            "selectedIconPath": "./static/tab/tab_active_queue.png",
-            "text": "排队"
         },{
             "pagePath": "pages/cabinet/index",
             "iconPath": "./static/tab/tab_cabinet.png",

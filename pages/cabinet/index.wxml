@@ -8,7 +8,7 @@
             <van-cell title="店铺" value="{{item.shop.name}}" border="{{false}}" />
             <van-cell title="版本" value="Ver.{{item.version}}" border="{{false}}" />
             <van-cell title="数量" value="{{item.number}}组" border="{{false}}" />
-            <van-cell title="排队更新时间" value="{{item.updateTime}}" border="{{false}}" />
+            <van-cell wx:if="{{item.enablePlayerCount}}" title="排队更新时间" value="{{item.updateTime}}" border="{{false}}" />
             <van-cell wx:if="{{item.enablePlayerCount}}" value="{{item.playerCount}}人" border="{{false}}">
                 <view slot="title">
                     <view class="van-cell-text">当前排队人数</view>
